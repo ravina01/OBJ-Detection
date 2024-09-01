@@ -96,10 +96,41 @@ Evaluating ML Models
 
 ### lets solve the problem of detection 
 - as we can see there are too many inputs to the CNN network, its computationally expensive process.
+
+
+### whats the problem in NMS ->
+- if there are 2 objects standing nearby, then -> and second bounding box has low conf score, 80 and 75 and first bounding box has conf score of 85 and 80 then it might discard the second bounding box for another person.
+- to avoid this, we need to check if -> over lap between 2 bbounding box is high / low, if its low that means, its another person.
+- IOU can be used here, to remove extra BBOx.
 - 
 
+### Calculating Model size of the network, 1 x 1 conv -
+- from 3 FM -> 6 FM we need 3 x 6 = 18 filters lets say of size  3x3 = so total weights trainable would be = 3 x 6 x 3 x 3
+- 5 conv layer = 3.7 MBs and pooling layer has no trainable parameters.
+- total 198 MBs in FC layer - only in classification part
+- classification part needs more weights compared to conv layer.
+- For example, if a layer has 256 channels, applying a 1x1 convolution with 64 filters will reduce the number of channels to 64.
 
 
+
+![image](https://github.com/user-attachments/assets/f870ff64-c68a-49b2-82cd-48e735de04ca)
+
+![image](https://github.com/user-attachments/assets/05b8c652-c083-4f6a-8549-d261d8f34bb5)
+
+![image](https://github.com/user-attachments/assets/54f38673-9993-4ea0-b512-3e636a00827b)
+
+
+### Locate obj in an image
+
+![image](https://github.com/user-attachments/assets/d791f9ff-62a8-4e65-b8d8-505665abb89b)
+
+
+![image](https://github.com/user-attachments/assets/c448f066-41c9-432e-afbc-af8d1b3faffc)
+
+### Faster RCNN
+
+- having sliding window + image (Feature) pyramid on FM can slow down the network if the image pyramid is 5 scale down.
+- 
 
 
 
